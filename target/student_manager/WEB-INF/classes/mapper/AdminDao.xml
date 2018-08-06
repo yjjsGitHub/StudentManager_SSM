@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为Dao接口方法提供sql语句配置 -->
+<mapper namespace="com.neusoft.dao.IAdminDao">
+
+    <select id="get" parameterType="java.lang.String" resultType="Admin">
+        SELECT * FROM admin
+        <where>
+            email = #{arg0} AND password = #{arg1}
+        </where>
+    </select>
+
+    <update id="update" parameterType="java.lang.String">
+        update admin set
+        lastTime = #{arg1}
+        <where>
+            email = #{arg0}
+        </where>
+    </update>
+
+</mapper>

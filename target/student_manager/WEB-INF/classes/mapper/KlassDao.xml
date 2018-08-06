@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 设置为Dao接口方法提供sql语句配置 -->
+<mapper namespace="com.neusoft.dao.IKlassDao">
+
+    <select id="get" resultType="Klass" parameterType="java.lang.String">
+        SELECT * FROM class WHERE cid = #{cid}
+    </select>
+
+    <select id="list" resultType="Klass">
+        select * from class
+    </select>
+
+    <update id="update" parameterType="Klass">
+        UPDATE class SET
+        cname = #{cname} ,
+        note = #{note}
+        <where>
+            cid = #{cid}
+        </where>
+    </update>
+
+    <delete id="delete" parameterType="java.lang.String">
+        DELETE from class
+        <where>
+            cid = #{cid}
+        </where>
+    </delete>
+
+    <insert id="insert" parameterType="Klass">
+        INSERT INTO class
+        (cid, cname, note)
+        VALUE
+        (#{cid}, #{cname}, #{note})
+    </insert>
+
+</mapper>
